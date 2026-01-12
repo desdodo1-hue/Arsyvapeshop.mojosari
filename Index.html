@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Opening Arsy Vape Shop Mojosari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* Latar belakang menggunakan gambar interior toko vape yang estetik dan bersih */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1620332372374-f108c53d2e03?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .script-font { font-family: 'Dancing Script', cursive; }
+        .countdown-box {
+            /* Warna cokelat zaitun sesuai dengan desain poster */
+            background: rgba(101, 88, 59, 0.95);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white flex items-center justify-center p-6 text-center">
+
+    <div class="max-w-2xl w-full space-y-8 bg-black/40 p-10 rounded-3xl border border-white/10 backdrop-blur-md shadow-2xl">
+        
+        <div class="flex justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center p-2 shadow-2xl overflow-hidden">
+                <img src="https://raw.githubusercontent.com/desdodo1-hue/Arsyvapeshop-mojosari.github.io/refs/heads/main/logo-arsy.png" alt="Logo Arsy Vape" class="rounded-full object-contain">
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <h3 class="text-lg tracking-[0.4em] font-bold uppercase text-gray-200">You Are Invited</h3>
+            <h1 class="text-6xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">GRAND</h1>
+            <h2 class="text-5xl md:text-7xl script-font text-white -mt-4 drop-shadow-2xl">Opening</h2>
+        </div>
+
+        <div class="space-y-4 py-4">
+            <p class="text-2xl font-black tracking-[0.2em] uppercase">Lets Join Us !</p>
+            <div class="space-y-1">
+                <p class="text-xl font-bold">Arsy Vape Shop Mojosari</p>
+                <p class="text-lg text-gray-300">Grand Opening</p>
+                <p class="text-lg font-semibold tracking-widest text-gray-200">Saturday, January 17, 2026</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
+            <div class="countdown-box p-4 rounded-lg shadow-xl">
+                <span id="days" class="block text-4xl font-black italic">0</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Day</span>
+            </div>
+            <div class="countdown-box p-4 rounded-lg shadow-xl">
+                <span id="hours" class="block text-4xl font-black italic">0</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Hour</span>
+            </div>
+            <div class="countdown-box p-4 rounded-lg shadow-xl">
+                <span id="minutes" class="block text-4xl font-black italic">0</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Minute</span>
+            </div>
+        </div>
+
+        <div class="pt-8 space-y-6">
+            <a href="https://instagram.com/arsyvapeshop.mojosari" target="_blank" 
+               class="group relative inline-flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-black uppercase tracking-widest hover:bg-yellow-600 hover:text-white transition-all duration-300 shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                @arsyvapeshop.mojosari
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Set tanggal tujuan (17 Januari 2026)
+        const targetDate = new Date("Jan 17, 2026 10:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = d < 0 ? 0 : d;
+            document.getElementById("hours").innerText = h < 0 ? 0 : h;
+            document.getElementById("minutes").innerText = m < 0 ? 0 : m;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.querySelector(".grid").innerHTML = "<p class='col-span-3 text-3xl font-black text-yellow-500'>WE ARE OPEN NOW!</p>";
+            }
+        };
+
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
